@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+<mapper namespace="CompanyMapper">
+    <insert id="insertCompany" parameterType="CompanyItem">
+        INSERT INTO company(com_name, com_ceo, com_ceoPhone, com_phone, com_memo, id)
+        VALUES (#{companyName}, #{companyCeo}, #{companyCeoPhone}, #{companyPhone}, #{companyMemo}, #{id});
+    </insert>
+    
+    <!-- 회사이름과 회사전화번호를 이용하여 값 찾기 -->
+    <select id="checkCompany" parameterType="CompanyItem" resultType="CompanyItem">
+        SELECT com_name as companyName, com_ceo as companyCeo, com_ceoPhone as companyCeoPhone, com_phone as companyPhone, com_memo as companyMemo, id as id
+        FROM company WHERE com_name = #{companyName} AND com_phone = #{companyPhone};
+    </select>
+    
+    <!-- 모든 값 조회 -->
+    <select id="checkAllCompany" resultType="CompanyItem">
+        SELECT company_id as companyId, com_name as companyName, com_ceo as companyCeo, com_ceoPhone as companyCeoPhone, com_phone as companyPhone, com_memo as companyMemo, id as id
+        FROM company;
+    </select>
+    
+    <!-- 회사이름으로 회사정보 검색 -->
+    <select id="selectAllByName" resultType="CompanyItem" parameterType="String">
+        SELECT com_name as companyName, com_ceo as companyCeo, com_ceoPhone as companyCeoPhone, com_phone as companyPhone, com_memo as companyMemo, id as id
+        FROM company WHERE com_name LIKE CONCAT('%', #{name}, '%');
+    </select>
+    
+    <!-- 회사 ID로 회사 정보 조회 -->
+    <select id="selectAllById" resultType="CompanyItem" parameterType="String">
+        SELECT com_name as companyName, com_ceo as companyCeo, com_ceoPhone as companyCeoPhone, com_phone as companyPhone, com_memo as companyMemo, id as id
+        FROM company WHERE company_id = #{companyId};
+    </select>
+    
+</mapper>

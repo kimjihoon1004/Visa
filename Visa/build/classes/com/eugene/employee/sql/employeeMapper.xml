@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+<mapper namespace="EmployeeMapper">
+
+    <!-- 직원 추가 -->
+    <insert id="insertEmployee" parameterType="EmployeeItem">
+        INSERT INTO employee(emp_name, emp_nationality, emp_phone, emp_number, emp_visa, emp_date, emp_memo, company_id)
+        VALUES (#{empName}, #{empNation}, #{empPhone}, #{empNumber}, #{empVisa}, #{empDate}, #{empMemo}, #{companyId});
+    </insert>
+    
+    <!-- 이름과 직원등록번호를 활용하여 값을 조회 -->
+    <select id="checkEmployee" parameterType="EmployeeItem" resultType="EmployeeItem">
+        SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId  FROM employee
+        WHERE emp_name = #{empName} AND emp_number = #{empNumber};
+    </select>
+    
+    <!-- 모든 값을 조회 -->
+    <select id="checkAllEmployee" resultType="EmployeeItem">
+        SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId  FROM employee;
+    </select>
+    
+    <!-- 이름으로 인적사항 검색 -->
+    <select id="selectAllByName" resultType="EmployeeItem" parameterType="String">
+        SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId 
+        FROM employee WHERE emp_name LIKE CONCAT('%', #{name}, '%');
+    </select>
+    
+    <!-- 모든 계약자의 회사 아이디 조회 -->
+    <!-- company테이블에서 회사 아이디를 조회하고, employee테이블에서 모든 회사 아이디를 조회한 후, company테이블의 회사 아이디가 기준이 되어 employee테이블에서 각 회사 아이디의 수를 센다. -->
+    <select id="selectAllCompanyId" resultType="String">
+        SELECT company_id as companyId FROM employee;
+    </select>
+    
+    <!-- employee테이블에서 회사 아이디로 인적사항 조회 -->
+    <select id="selectAllByCompanyId" resultType="EmployeeItem" parameterType="EmployeeItem">
+        SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId
+        FROM employee WHERE company_id = #{companyId};
+    </select>
+    
+    <select id="selectAllByCompanyIdAndName" resultType="EmployeeItem" parameterType="EmployeeItem">
+        SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId
+        FROM employee WHERE company_id = #{companyId} AND emp_name LIKE CONCAT('%', #{empName}, '%');
+    </select>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+<mapper namespace="UserMapper">
+    <!-- user 값 전부 조회 -->
+    <select id="selectAllUser" resultType="userItem">
+        SELECT id as id, user_name as userName, user_id as userId, user_pw as userPw, user_phone as userPhone, user_date as userDate
+        FROM user;
+    </select>
+    
+    <!-- user id 조회 -->
+    <select id="findUserId" parameterType="userItem" resultType="String">
+        SELECT user_id as userId
+        FROM user
+        WHERE user_name=#{userName} and user_phone=#{userPhone} and user_date=#{userDate};
+    </select>
+    
+    <!-- user pw 조회 -->
+    <select id="findUserPw" parameterType="userItem" resultType="String">
+        SELECT user_pw as userPw
+        FROM user
+        WHERE user_name = #{userName} and user_phone = #{userPhone} and user_date = #{userDate} and user_id = #{userId};
+    </select>
+    
+    <!-- id를 이용하여 pw 조회 = 로그인 -->
+    <select id="checkPw" parameterType="String" resultType="String">
+        SELECT user_pw as userPw
+        FROM user
+        WHERE user_id = #{user_id};
+    </select>
+    
+    <!-- 사용자 추가 -->
+    <insert id="insertUser" parameterType="UserItem">
+        INSERT INTO user(user_name, user_id, user_pw, user_phone, user_date)
+        VALUES (#{userName}, #{userId}, #{userPw}, #{userPhone}, #{userDate});
+    </insert>
+    
+    <!-- user_id를 이용하여 id(=PK) 조회 -->
+    <select id="selectId" parameterType="String" resultType="String">
+        SELECT id as id
+        FROM user
+        WHERE user_id = #{id};
+    </select>
+</mapper>
