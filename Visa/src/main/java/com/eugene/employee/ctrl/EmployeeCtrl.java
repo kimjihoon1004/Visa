@@ -42,6 +42,7 @@ public class EmployeeCtrl extends SqlSessionCtrl {
 		return success;
 	}
 	
+	/*rkskekf*/
 	public List<EmployeeItem> checkAllEmployee()	{
 		List<EmployeeItem> temp = new ArrayList<EmployeeItem>();
 		SqlSession session = null;
@@ -109,6 +110,21 @@ public class EmployeeCtrl extends SqlSessionCtrl {
 		try {
 			session = sqlSessionFactory.openSession();
 			temp = session.selectList("EmployeeMapper.selectAllByCompanyIdAndName", employeeItem);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return temp;
+	}
+	
+	public List<EmployeeItem> selectAllById(String id)	{
+		List<EmployeeItem> temp = new ArrayList<EmployeeItem>();
+		SqlSession session = null;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+			temp = session.selectList("EmployeeMapper.selectAllById", id);
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {

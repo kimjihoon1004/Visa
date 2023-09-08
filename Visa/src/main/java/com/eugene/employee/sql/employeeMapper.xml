@@ -42,8 +42,16 @@
         FROM employee WHERE company_id = #{companyId};
     </select>
     
+    <!-- employee테이블에서 회사 아이디와 이름으로 조회 -->
     <select id="selectAllByCompanyIdAndName" resultType="EmployeeItem" parameterType="EmployeeItem">
         SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId
         FROM employee WHERE company_id = #{companyId} AND emp_name LIKE CONCAT('%', #{empName}, '%');
     </select>
+    
+    <!-- employee테이블에서 학생ID로 정보 조회 -->
+    <select id="selectAllById" resultType="EmployeeItem" parameterType="String">
+        SELECT employee_id as empId, emp_name as empName, emp_nationality as empNation, emp_phone as empPhone, emp_number as empNumber, emp_visa as empVisa, emp_date as empDate, emp_memo as empMemo, company_id as companyId
+        FROM employee WHERE employee_id = #{empId};
+    </select>
+    
 </mapper>

@@ -71,19 +71,20 @@
                             <td colspan = "2" bgcolor = "lightgray" height = "30" class = "style1"><h1><center>로그인</center></h1></td>                   
                         </tr>
                         
-                        <tr>
-                            <td width = "130" bgcolor = "lightgray" class = "style2"><center><p style="font-size:25px;">아이디</p></center></td>
-                            <td  width = "500">
-                                <input type="text" name="uID" size = "40" maxlength = "50" style="height:30px; font-size:20px;" class = "input_style1" />
+                        <tr height="50" align="center">
+                            <td width = "130" bgcolor = "lightgray" class = "style2">아이디</td>
+                            
+                            <td  width = "300">
+                                <input type="text" name="uID" size = "40" maxlength = "50"  class = "input_style1" />
                             </td>
                         </tr>
                         
                         
                         
-                        <tr>
-                            <td width = "130" bgcolor = "lightgray" class = "style2"><center><p style="font-size:25px;">비밀번호</p></center></td>
-                            <td  width = "500">
-                                <input type="password" name="uPW" size = "40" maxlength = "50" style="height:30px; font-size:20px;" class = "input_style1" />
+                        <tr height="50" align="center">
+                            <td width = "130" bgcolor = "lightgray" class = "style2">비밀번호</td>
+                            <td  width = "300" >
+                                <input type="password" name="uPW" size = "40" maxlength = "50"  class = "input_style1" />
                             </td>
                         </tr>
                     </table>
@@ -91,9 +92,9 @@
                     
                     <br><br>
                     <center>
-                        <input type = "submit" style="WIDTH: 100pt; HEIGHT: 30pt; font-size:20px;" value="로그인">&nbsp;&nbsp;
-                        <input type = "button" style="WIDTH: 100pt; HEIGHT: 30pt; font-size:20px;" onclick = "location.href='createUser.jsp'" value="회원가입"/>&nbsp;&nbsp;
-                        <input type = "button" style="WIDTH: 180pt; HEIGHT: 30pt; font-size:20px;" onclick = "location.href='findUser.jsp'" value="아이디/비밀번호 찾기"/>&nbsp;&nbsp;
+                        <input type = "submit"  value="로그인">&nbsp;&nbsp;
+                        <input type = "button" onclick = "location.href='createUser.jsp'" value="회원가입"/>&nbsp;&nbsp;
+                        <input type = "button"  onclick = "location.href='findUser.jsp'" value="아이디/비밀번호 찾기"/>&nbsp;&nbsp;
                     </center>
                 </form>
             </center>

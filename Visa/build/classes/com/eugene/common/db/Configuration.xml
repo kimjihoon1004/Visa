@@ -12,6 +12,8 @@
         <typeAlias alias="EmployeeItem" type="com.eugene.employee.item.EmployeeItem"/>
         <typeAlias alias="CompanyItem" type="com.eugene.company.item.CompanyItem"/>
         <typeAlias alias="ContractItem" type="com.eugene.contract.item.ContractItem"/>
+        <typeAlias alias="JudgementItem" type="com.eugene.judgement.item.JudgementItem"/>
+        <typeAlias alias="CodeItem" type="com.eugene.code.item.CodeItem"/>
     </typeAliases>
     
     
@@ -32,5 +34,7 @@
         <mapper resource="com/eugene/employee/sql/employeeMapper.xml"/>
         <mapper resource="com/eugene/company/sql/companyMapper.xml"/>
         <mapper resource="com/eugene/contract/sql/contractMapper.xml"/>
+        <mapper resource="com/eugene/judgement/sql/judgementMapper.xml"/>
+        <mapper resource="com/eugene/code/sql/codeMapper.xml"/>
     </mappers>
 </configuration>

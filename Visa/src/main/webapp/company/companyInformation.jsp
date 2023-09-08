@@ -40,44 +40,29 @@ if(search == "" || search == null)  {
         
         <tr align="center" height="50">
             <td width="100">
-                <p style="font-size:25px;">
+                
                 번호
-                </p>
             </td>
             <td width="250">
-                <p style="font-size:25px;">
                 회사이름
-                </p>
             </td>
             <td width="200">
-                <p style="font-size:25px;">
                 대표자
-                </p>
             </td>
             <td width="250">
-                <p style="font-size:25px;">
                 대표전화번호
-                </p>
             </td>
             <td width="250">
-                <p style="font-size:25px;">
                 회사전화번호
-                </p>
             </td>
             <td width="400">
-                <p style="font-size:25px;">
                 회사메모
-                </p>
             </td>
             <td width="200">
-                <p style="font-size:25px;">
                 계약자명단
-                </p>
             </td>
             <td width="200">
-                <p style="font-size:25px;">
                 편집
-                </p>
             </td>
             
         </tr>
@@ -90,33 +75,23 @@ if(search == "" || search == null)  {
             <%} %>
                 <td>
                     <!-- 번호 -->
-                    <p style="font-size:25px;">
                     <%=i+1 %>
-                    </p>
                 </td>
                 <td>
                     <!-- 회사이름 -->
-                    <p style="font-size:25px;">
                     <%=companyBean.get(i).getCompanyName() %>
-                    </p>
                 </td>
                 <td>
                     <!-- 대표자 -->
-                    <p style="font-size:25px;">
                     <%=companyBean.get(i).getCompanyCeo() %>
-                    </p>
                 </td>
                 <td>
                     <!-- 대표자전화번호 -->
-                    <p style="font-size:25px;">
                     <%=companyBean.get(i).getCompanyCeoPhone() %>
-                    </p>
                 </td>
                 <td>
                     <!-- 회사전화번호 -->
-                    <p style="font-size:25px;">
                     <%=companyBean.get(i).getCompanyPhone() %>
-                    </p>
                 </td>
                 <td>
                     <br>
@@ -126,16 +101,16 @@ if(search == "" || search == null)  {
                     String tempMemo = companyBean.get(i).getCompanyMemo();
                     if(tempMemo == "" || tempMemo == null || tempMemo.equals(null))   {
 	                   %>
-	                   <Textarea name="contractMemo" rows="5" cols="30" style="font-size:20px; resize:none;" placeholder="메모없음"></Textarea>
+	                   <Textarea name="contractMemo" rows="5" cols="30" resize:none;" placeholder="메모없음"></Textarea>
                        <br>
-                       <button style="font-size:20px;">저장</button>
+                       <button>저장</button>
 	                   <%
                     } else  {
                     	tempMemo = tempMemo.replace("□□", "\n");
 	                    %>
-	                    <Textarea name="contractMemo" rows="5" cols="30" style="font-size:20px; resize:none;" placeholder="메모없음"><%=tempMemo %></Textarea>
+	                    <Textarea name="contractMemo" rows="5" cols="30" resize:none;" placeholder="메모없음"><%=tempMemo %></Textarea>
                         <br>
-                        <button style="font-size:20px;">저장</button>
+                        <button>저장</button>
 	                    <%
                     }
                     %>
@@ -154,7 +129,7 @@ if(search == "" || search == null)  {
                     	}
                     }
                     %>
-                    <button style="width:70px; font-size:25px;" onclick="location.href='../employee/signup.jsp?empCompanyId=<%=companyBean.get(i).getCompanyId()%>'"><%=idCount %>명</button>
+                    <button style="width:70px;" onclick="location.href='../employee/signup.jsp?empCompanyId=<%=companyBean.get(i).getCompanyId()%>'"><%=idCount %>명</button>
                 </td>
                 <td>
                     <!-- 편집 버튼 -->
@@ -165,7 +140,7 @@ if(search == "" || search == null)  {
                     <input type="hidden" name="companyCeoPhone" value="<%=companyBean.get(i).getCompanyCeoPhone() %>">
                     <input type="hidden" name="companyPhone" value="<%=companyBean.get(i).getCompanyPhone() %>">
                     <input type="hidden" name="companyMemo" value="<%=companyBean.get(i).getCompanyMemo() %>">
-                    <input type="submit" style="width:70px; font-size:25px;" value="편집">
+                    <input type="submit" style="width:70px;" value="편집">
                     </form>
                 </td>
             </tr>

@@ -77,66 +77,44 @@ if(empCompanyId == null || empCompanyId == "") {
 <table border="1" width="1900">
     <tr align="center">
         <td colspan="12 ">
-            <br><font size="8">계약자 인적사항</font><br><br>
+            <br><font size="6">계약자 인적사항</font><br><br>
         </td>
     </tr>
     
     <tr align="center">
         <td width="60">
-            <p style="font-size:25px;">
             순번
-            </p>
         </td>
         <td width="300">
-            <p style="font-size:25px;">
             이름
-            </p>
         </td>
         <td width="120">
-            <p style="font-size:25px;">
             국적
-            </p>
         </td>
         <td width="200">
-            <p style="font-size:25px;">
             전화번호
-            </p>
         </td>
         <td width="200">
-            <p style="font-size:25px;">
             등록번호
-            </p>
         </td>
         <td width="150">
-            <p style="font-size:25px;">
             비자타입
-            </p>
         </td>
         <td width="150">
-            <p style="font-size:25px;">
             체류만료일
-            </p>
         </td>
         <td width="350">
-            <p style="font-size:25px;">
             메모
-            </p>
         </td>
         
         <td width="150">
-            <p style="font-size:25px;">
             회사정보
-            </p>
         </td>
         <td width="100">
-            <p style="font-size:25px;">
             심사표
-            </p>
         </td>
         <td width="100">
-            <p style="font-size:25px;">
             편집
-            </p>
         </td> 
     </tr>
     
@@ -148,80 +126,69 @@ if(empCompanyId == null || empCompanyId == "") {
     <%} %>
             <td>
                 <!-- 순번 -->
-                <p style="font-size:25px;">
                 <%=i+1 %>
-                </p>
             </td>
             <td>
                 <!-- 이름 -->
-                <p style="font-size:25px;">
                 <%=empBean.get(i).getEmpName() %>
-                </p>
             </td>            
             <td>
                 <!-- 국적 -->
-                <p style="font-size:25px;">
                 <%=empBean.get(i).getEmpNation() %>
-                </p>
             </td>
             <td>
                 <!-- 전화번호 -->
-                <p style="font-size:25px;">
                 <%=empBean.get(i).getEmpPhone() %>
-                </p>
             </td>
             <td>
                 <!-- 등록번호 -->
-                <p style="font-size:25px;">
                 <%=empBean.get(i).getEmpNumber() %>
-                </p>
             </td>
             <td>
                 <!-- 비자타입 -->
-                <p style="font-size:25px;">
                 <%=empBean.get(i).getEmpVisa() %>
-                </p>
             </td>
             <td>
                 <!-- 체류만료일 -->
-                <p style="font-size:25px;">
                 <%=empBean.get(i).getEmpDate() %>
-                </p>
             </td>
             <td>
                 <!-- 메모 -->
                 <br>
                 <%if(empBean.get(i).getEmpMemo() == " " || empBean.get(i).getEmpMemo() == null) {%>
-	                <Textarea name="contractMemo" rows="5" cols="30" style="font-size:20px; resize:none;" placeholder="메모없음"></Textarea>
-	                <button style="font-size:20px;">저장</button>
+	                <Textarea name="contractMemo" rows="5" cols="30" resize:none;" placeholder="메모없음"></Textarea>
+	                <br>
+	                <button>저장</button>
                 <%} else {%>
-                    <Textarea name="contractMemo" rows="5" cols="30" style="font-size:20px; resize:none;"><%=empBean.get(i).getEmpMemo().replace("□□", "\n") %></Textarea>
-                    <button style="font-size:20px;">저장</button>
+                    <Textarea name="contractMemo" rows="5" cols="30" resize:none;"><%=empBean.get(i).getEmpMemo().replace("□□", "\n") %></Textarea>
+                    <br>
+                    <button>저장</button>
                 <%} %>
                 <br><br>
             </td>
            
             <td>
                 <!-- 회사정보 버튼 -->
-                <button style="font-size:20px;" onClick="location.href='../contract/companyEmployeeContract.jsp?employeeId=<%=empBean.get(i).getEmpId()%>&companyId=<%=empBean.get(i).getCompanyId()%>'">회사정보</button>
+                <button onClick="location.href='../contract/companyEmployeeContract.jsp?employeeId=<%=empBean.get(i).getEmpId()%>&companyId=<%=empBean.get(i).getCompanyId()%>'">회사정보</button>
             </td>
             <td>
                 <!-- 심사표 진입 버튼 -->
-                <button style="font-size:20px;">심사표</button>
+                <button onClick="location.href='../judgement/temp.jsp?id=<%=empBean.get(i).getEmpId()%>'">심사표</button>
             </td>
             <td>
                 <!-- 계약자 인적사항 편집 -->
-                <button style="font-size:20px;">편집</button>
+                <button>편집</button>
             </td>
         </tr>
     <%}%>
 </table>
 <br><br>
 <form action="signup.jsp">
-<input type="text" name="employeeSearch" placeholder="이름 검색" style="width:300px; height:30px; font-size:20px;">&nbsp;<input type="submit" style="font-size:18px; height:33px; width:80px;" value="검색">
+<input type="text" name="employeeSearch" placeholder="이름 검색" style="font-size:18px; width:300px; height:30px;">&nbsp;<input type="submit" style="font-size:18px; height:33px; width:80px;" value="검색">
 </form>
 <br>
-<input type="button" value="직원추가" style="font-size:18px; padding : 10px 10px 10px 10px;" onclick="location.href='employeeAppend.jsp'"/>
+<input type="button" value="연습장" style="font-size:18px; padding : 10px 10px 10px 10px;" onclick="location.href='temp.jsp'"/>
+<input type="button" value="계약자 추가" style="font-size:18px; padding : 10px 10px 10px 10px;" onclick="location.href='employeeAppend.jsp'"/>
 </center>
 </body>
 </html>

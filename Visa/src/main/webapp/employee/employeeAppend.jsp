@@ -58,7 +58,7 @@
 	    <table border="1" width="700" style="margin-right: 30px;">
 	        <tr align="center">
 	            <td colspan="2">
-	                <br><font size="5">직원 추가</font><br><br>
+	                <br><font size="5">계약자 추가</font><br><br>
 	            </td>
 	        </tr>
 	        
@@ -288,7 +288,7 @@
 	    </table>
     </div>
     <br>
-    <input type="submit" style="padding : 10px 10px 10px 10px;" value="직원 추가"/>
+    <input type="submit" style="padding : 10px 10px 10px 10px;" value="계약자 추가"/>
     <button style="padding : 10px 10px 10px 10px;" onclick="location.href='signup.jsp'">취소</button>
     </center>
     </form>

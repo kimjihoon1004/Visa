@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+<mapper namespace="CodeMapper">
+    <select id="selectAllByCodeName" parameterType="String" resultType="CodeItem">
+        SELECT code_id as codeId
+        , code_name as codeName
+        , parent_id as parentId
+        , code_value as codeValue
+        , code_judgement as codeJudgement
+        FROM code 
+        WHERE code_name = #{codeName};
+    </select>
+    
+    <select id="selectAllByParentId" parameterType="String" resultType="CodeItem">
+        SELECT code_id as codeId
+        , code_name as codeName
+        , parent_id as parentId
+        , code_value as codeValue
+        , code_judgement as codeJudgement
+        FROM code 
+        WHERE parent_id = #{parentId};
+    </select>
+    
+    <select id="selectIdByName" parameterType="String" resultType="String">
+        SELECT code_id FROM code WHERE code_name = #{codeName};
+    </select>
+</mapper>

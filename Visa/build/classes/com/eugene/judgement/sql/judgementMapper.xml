@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+<mapper namespace="JudgementMapper">
+    <select id="selectAllByEmpId" parameterType="String" resultType="JudgementItem">
+        SELECT judgement_id as judgementId, annualIncome as annualIncome, license as license, workmanship as workmanship, 
+        education as education, age as age, korean as korean, longevity as longevity, IP as ip, DA as da,
+        root as root, GM as gm, EE as ee, TE as te, SA as sa, CR as cr, LC as lc, SC as sc, TPP as tpp, SIP as sip, 
+        depopulatedArea as depopulatedArea, immigration as immigration, violation as violation, employee_id as employeeId,
+        judgementDate as judgementDate, scoreRequirement as scoreRequirement, basicRequirement as basicRequirement
+        FROM judgement WHERE employee_id = #{empId};
+    </select>
+</mapper>
